@@ -1,41 +1,42 @@
-Documentacion tecnica - RegisTech Backend
-Este directorio contiene el codigo fuente de la API para el sistema de inventarios. Se ha estructurado bajo los principios de arquitectura limpia para facilitar el mantenimiento y la escalabilidad del proyecto.
+Documentación Técnica - RegisTech Backend
+Este directorio contiene el código fuente de la API para el sistema de gestión de inventarios. Se ha estructurado bajo los principios de Arquitectura Limpia (Clean Architecture) para garantizar una separación clara de responsabilidades, facilitando el mantenimiento y la escalabilidad del proyecto ADSO.
 
-Estructura del proyecto
-El codigo se divide en las siguientes capas:
+Estructura del Proyecto
+El código se organiza en las siguientes capas jerárquicas:
 
-src/domain: Contiene las entidades y las interfaces de los repositorios.
+src/domain: Contiene las entidades del negocio (Usuario, Item, Movimiento) y las definiciones de interfaces.
 
-src/application: Contiene la logica de negocio y los casos de uso.
+src/application: Implementa la lógica de negocio y servicios especializados como AuthService e InventarioService.
 
-src/infrastructure: Implementaciones de la base de datos (MySQL) y servicios externos.
+src/infrastructure: Contiene las implementaciones técnicas, incluyendo la conexión a MySQL (XAMPP) y los repositorios de datos.
 
-src/interfaces: Controladores de rutas, definiciones de endpoints y middlewares.
+src/interfaces: Define los controladores de rutas, los endpoints de la API y los middlewares de validación.
 
-Requisitos previos
-Para ejecutar este proyecto es necesario tener instalado:
+Requisitos Previos
+Para ejecutar y colaborar en este proyecto es necesario contar con:
 
-Node.js (Version LTS)
+Node.js: Versión LTS instalada.
 
-MySQL Server
+MySQL Server: Gestionado preferiblemente a través de XAMPP para entorno de desarrollo local.
 
-Instrucciones de instalacion
-Clonar el repositorio y entrar a la carpeta backend.
+Instrucciones de Instalación
+Clonar el repositorio y acceder a la carpeta del backend.
 
-Ejecutar el comando de instalacion de dependencias:
-npm install
+Ejecutar el comando de instalación de dependencias: npm install
 
-Configurar el archivo .env en la raiz de la carpeta backend con los siguientes campos:
-PORT, DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, JWT_SECRET.
+Configurar el archivo .env en la raíz de la carpeta con los siguientes campos obligatorios: PORT, DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, JWT_SECRET.
 
-Para iniciar el servidor en modo desarrollo:
-npm run dev
+Importar el script SQL de la base de datos en phpMyAdmin para habilitar las tablas de usuarios e inventario.
 
-Avances actuales
-Configuracion del servidor con Express.
+Para iniciar el servidor en modo desarrollo: npm run dev
 
-Implementacion de pool de conexiones para MySQL.
+Avances Actuales
+Configuración del Servidor: Inicialización con Express y manejo de variables de entorno mediante dotenv.
 
-Estructura de directorios inicializada.
+Capa de Datos: Implementación de pool de conexiones para MySQL y repositorios con soporte para transacciones SQL, garantizando la integridad en registros de stock.
 
-Manejo de variables de entorno con dotenv.
+Seguridad: Integración de AuthService con encriptación de contraseñas mediante Bcrypt y autenticación basada en JWT (JSON Web Tokens).
+
+Gestión de Inventario: Implementación de controladores para el registro riguroso de movimientos (Entradas, Bajas y Reemplazos) con historial de auditoría automático.
+
+Enrutamiento Modular: Organización de endpoints bajo prefijos /api/auth y /api/inventario.
