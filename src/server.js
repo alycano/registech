@@ -1,4 +1,8 @@
 const express = require('express');
+const routes = require('./src/interfaces/routes'); // Ajusta la ruta si es necesario
+
+// ... después de tus middlewares (express.json())
+app.use('/api', routes);
 const cors = require('cors');
 require('dotenv').config();
 
